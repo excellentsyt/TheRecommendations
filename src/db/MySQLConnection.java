@@ -16,7 +16,7 @@ import external.ExternalAPI;
 import external.ExternalAPIFactory;
 
 public class MySQLConnection implements DBConnection {
-	
+
 	private Connection conn;
 
 	public MySQLConnection() {
@@ -27,7 +27,6 @@ public class MySQLConnection implements DBConnection {
 			e.printStackTrace();
 		}
 	}
-
 
 	@Override
 	public void close() {
@@ -55,7 +54,7 @@ public class MySQLConnection implements DBConnection {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
 
 	@Override
@@ -167,13 +166,13 @@ public class MySQLConnection implements DBConnection {
 	@Override
 	public List<Item> searchItems(String userId, double lat, double lon, String term) {
 		// Connect to external API
-				ExternalAPI api = ExternalAPIFactory.getExternalAPI(); // moved here
-				List<Item> items = api.search(lat, lon, term);
-				for (Item item : items) {
-					// Save the item into our own db.
-					saveItem(item);
-				}
-				return items;
+		ExternalAPI api = ExternalAPIFactory.getExternalAPI(); // moved here
+		List<Item> items = api.search(lat, lon, term);
+		for (Item item : items) {
+			// Save the item into our own db.
+			saveItem(item);
+		}
+		return items;
 	}
 
 	@Override
@@ -214,7 +213,7 @@ public class MySQLConnection implements DBConnection {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
